@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn cryptocurrency and blockchain concepts step by step with this interactive educational platform">
+    <meta name="keywords" content="cryptocurrency, blockchain, crypto education, bitcoin, ethereum, wallet, NFT, transactions">
+    <meta name="author" content="Crypto Training Site">
+    <meta property="og:title" content="Crypto 101: Your Journey Through Digital Currency">
+    <meta property="og:description" content="An interactive educational platform teaching cryptocurrency and blockchain concepts">
+    <meta property="og:type" content="website">
+    <title>Crypto 101: Your Journey Through Digital Currency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Crypto 101: Your Journey Through Digital Currency",
+      "description": "An interactive educational platform teaching cryptocurrency and blockchain concepts from the basics to advanced topics.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Crypto Training Site",
+        "sameAs": "https://cryptotrainingsite.com"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "online",
+        "availabilityStarts": "2023-01-01"
+      }
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #4a5568;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .timeline-container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            position: relative;
+            min-height: 600px;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .timeline-header h2 {
+            color: #4a5568;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .timeline-subtitle {
+            color: #718096;
+            font-size: 1.1em;
+        }
+
+        .timeline {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 600px; /* Increased height for better spacing */
+            margin: 80px 0;
+            padding: 0 50px;
+        }
+
+        .timeline-trunk {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 8px;
+            background: linear-gradient(90deg, #4299e1, #9f7aea, #ed8936, #38a169, #e53e3e, #d69e2e, #319795, #553c9a, #4299e1);
+            border-radius: 4px;
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+
+        .timeline-stations {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            position: relative;
+            z-index: 2;
+            margin: 0 auto;
+            padding-top: 100px; /* Add padding to center the stations vertically */
+        }
+        
+        /* Ensure all stations are properly centered horizontally */
+        .station {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center; /* Center all text content */
+        }
+
+        /* Alternating positioning */
+        .station:nth-child(odd) {
+            margin-top: -100px; /* Above the trunk */
+        }
+
+        .station:nth-child(even) {
+            margin-top: 400px; /* Below the trunk, adjusted for better visibility */
+        }
+
+        /* Special adjustment for the foundation */
+        .station.foundation {
+            margin-top: -180px !important; /* Position foundation above trunk */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Ensure it's perfectly centered */
+        }
+
+        /* Connecting lines from stations to trunk */
+        .station::before {
+            content: '';
+            position: absolute;
+            width: 6px; /* Thicker lines for subway map style */
+            border-radius: 0; /* Remove rounded corners for subway map style */
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* For stations above the trunk (odd-numbered) */
+        .station:nth-child(odd)::before {
+            top: 28%; /* Start from bottom of node */
+            height: 150px; /* Connect to trunk */
+        }
+
+        /* For stations below the trunk (even-numbered) */
+        .station:nth-child(even)::before {
+            bottom: 100%; /* Start from top of node */
+            height: 100px; /* Adjusted to reach exactly to the trunk */
+        }
+
+        /* Station-specific line colors - subway map style */
+        .station:nth-child(1)::before { 
+            background: #2d3748; 
+        }
+        /* Even stations (below trunk) with precise adjustments */
+        .station:nth-child(2)::before { 
+            background: #4299e1;
+            height: 100px; /* Adjusted to match the trunk exactly */
+        }
+        .station:nth-child(3)::before { 
+            background: #9f7aea;
+        }
+        .station:nth-child(4)::before { 
+            background: #ed8936;
+            height: 100px; /* Adjusted to match the trunk exactly */
+        }
+        .station:nth-child(5)::before { 
+            background: #38a169;
+        }
+        .station:nth-child(6)::before { 
+            background: #e53e3e;
+            height: 100px; /* Adjusted to match the trunk exactly */
+        }
+        .station:nth-child(7)::before { 
+            background: #d69e2e;
+        }
+        .station:nth-child(8)::before { 
+            background: #319795;
+            height: 100px; /* Adjusted to match the trunk exactly */
+        }
+        .station:nth-child(9)::before { 
+            background: #553c9a;
+        }
+
+        /* Station node */
+        .station-node {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+            border: 5px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 3;
+        }
+
+        .station:hover .station-node {
+            transform: scale(1.15);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+
+        .station-label {
+            background: #4299e1;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+            min-width: 140px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 3;
+        }
+
+        .station-number {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3748;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            font-weight: bold;
+            z-index: 4;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Special styling for blockchain foundation */
+        .station.foundation .station-node {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            font-size: 2.2em;
+            border: 6px solid white;
+        }
+
+        .station.foundation .station-label {
+            background: #2d3748;
+            font-size: 1.2em;
+            padding: 14px 24px;
+            min-width: 160px;
+        }
+
+        /* Override the connection line for foundation station */
+        .station.foundation::before {
+            width: 6px; /* Match the other lines */
+            height: 150px !important; /* Fixed height to reach the trunk */
+            background: #2d3748 !important; /* Solid color for subway map style */
+        }
+
+        /* Content panels */
+        .content-panel {
+            position: absolute;
+            left: 50%; /* Center the panel */
+            transform: translateX(-50%);
+            width: 900px;
+            max-height: 0;
+            overflow: hidden;
+            background: #f7fafc;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            z-index: 20; /* Increase z-index to appear above other elements */
+        }
+
+        /* Position content panels */
+        .station:nth-child(odd) .content-panel {
+            top: -350px; /* Move panels further up to avoid overlap */
+        }
+
+        .station:nth-child(even) .content-panel {
+            top: 160px; /* Move panels further down to avoid overlap */
+        }
+        
+        /* Station-specific panel adjustments if needed */
+        .station:nth-child(2) .content-panel {
+            top: 160px; /* Fine-tune second station panel */
+        }
+        
+        /* Foundation station panel adjustment */
+        .station:nth-child(1) .content-panel {
+            top: -350px; /* Adjust foundation panel position */
+        }
+
+        .content-panel.active {
+            max-height: 1000px;
+            padding: 25px;
+        }
+
+        .content-inner {
+            opacity: 0;
+            transition: opacity 0.3s ease 0.1s;
+        }
+
+        .content-panel.active .content-inner {
+            opacity: 1;
+        }
+
+        .concept-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #4299e1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .analogy-box {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #e17055;
+        }
+
+        .visual-placeholder {
+            background: linear-gradient(135deg, #a8e6cf, #88d8a3);
+            border: 2px dashed #4a90a4;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            color: #2d3748;
+            font-weight: bold;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e8f4fd, #bee3f8);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #3182ce;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fed7d7, #feb2b2);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #e53e3e;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            background: #e53e3e;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 25; /* Ensure button appears above content */
+        }
+
+        .close-btn:hover {
+            background: #c53030;
+            transform: scale(1.1);
+        }
+
+        .navigation-help {
+            text-align: center;
+            margin-top: 40px;
+            background: rgba(255,255,255,0.95);
+            padding: 25px;
+            border-radius: 20px;
+        }
+
+        .nav-instructions {
+            color: #4a5568;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-btn:hover {
+            background: #3182ce;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .progress-indicator {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: rgba(66, 153, 225, 0.95);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 1em;
+            z-index: 100;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            font-weight: 600;
+        }
+
+        /* Station color variations */
+        .station:nth-child(1) .station-node { background: linear-gradient(135deg, #2d3748, #4a5568); }
+        .station:nth-child(1) .station-label { background: #2d3748; }
+        .station:nth-child(1)::before { background: linear-gradient(to bottom, #2d3748, #4a5568) !important; }
+
+        .station:nth-child(2) .station-node { background: linear-gradient(135deg, #4299e1, #3182ce); }
+        .station:nth-child(2) .station-label { background: #4299e1; }
+        .station:nth-child(2)::before { background: linear-gradient(to top, #4299e1, #3182ce) !important; }
+
+        .station:nth-child(3) .station-node { background: linear-gradient(135deg, #9f7aea, #805ad5); }
+        .station:nth-child(3) .station-label { background: #9f7aea; }
+        .station:nth-child(3)::before { background: linear-gradient(to bottom, #9f7aea, #805ad5) !important; }
+
+        .station:nth-child(4) .station-node { background: linear-gradient(135deg, #ed8936, #dd6b20); }
+        .station:nth-child(4) .station-label { background: #ed8936; }
+        .station:nth-child(4)::before { background: linear-gradient(to top, #ed8936, #dd6b20) !important; }
+
+        .station:nth-child(5) .station-node { background: linear-gradient(135deg, #38a169, #2f855a); }
+        .station:nth-child(5) .station-label { background: #38a169; }
+        .station:nth-child(5)::before { background: linear-gradient(to bottom, #38a169, #2f855a) !important; }
+
+        .station:nth-child(6) .station-node { background: linear-gradient(135deg, #e53e3e, #c53030); }
+        .station:nth-child(6) .station-label { background: #e53e3e; }
+        .station:nth-child(6)::before { background: linear-gradient(to top, #e53e3e, #c53030) !important; }
+
+        .station:nth-child(7) .station-node { background: linear-gradient(135deg, #d69e2e, #b7791f); }
+        .station:nth-child(7) .station-label { background: #d69e2e; }
+        .station:nth-child(7)::before { background: linear-gradient(to bottom, #d69e2e, #b7791f) !important; }
+
+        .station:nth-child(8) .station-node { background: linear-gradient(135deg, #319795, #2c7a7b); }
+        .station:nth-child(8) .station-label { background: #319795; }
+        .station:nth-child(8)::before { background: linear-gradient(to top, #319795, #2c7a7b) !important; }
+
+        .station:nth-child(9) .station-node { background: linear-gradient(135deg, #553c9a, #44337a); }
+        .station:nth-child(9) .station-label { background: #553c9a; }
+        .station:nth-child(9)::before { background: linear-gradient(to bottom, #553c9a, #44337a) !important; }
+        
+        /* Visited station indicator */
+        .visited-indicator {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #48bb78;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 2px solid white;
+            z-index: 5;
+        }
+        
+        /* Accessibility improvements */
+        .station:focus {
+            outline: 3px solid #4299e1;
+            outline-offset: 3px;
+            border-radius: 50%;
+        }
+        
+        .nav-btn:focus {
+            outline: 3px solid white;
+            outline-offset: 2px;
+        }
+        
+        /* Print styles for educational material */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            
+            .timeline-trunk,
+            .station::before,
+            .progress-indicator,
+            .nav-buttons,
+            .close-btn {
+                display: none;
+            }
+            
+            .timeline-container {
+                box-shadow: none;
+                padding: 0;
+            }
+            
+            .content-panel {
+                max-height: none;
+                position: relative;
+                left: auto;
+                transform: none;
+                overflow: visible;
+                page-break-inside: avoid;
+                width: 100%;
+                box-shadow: none;
+                margin-bottom: 30px;
+                border: 1px solid #ddd;
+            }
+            
+            .content-inner {
+                opacity: 1;
+            }
+            
+            h1, h2, h3, h4 {
+                color: black !important;
+            }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 1400px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .timeline {
+                padding: 0 20px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .content-panel {
+                width: 80%;
+                max-width: 800px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .timeline-stations {
+                width: 95%;
+            }
+            
+            .content-panel {
+                width: 90%;
+                max-width: 700px;
+            }
+            
+            .station-node {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5em;
+            }
+            
+            .station.foundation .station-node {
+                width: 75px;
+                height: 75px;
+                font-size: 1.8em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-container {
+                padding: 30px 20px;
+            }
+            
+            .content-panel {
+                width: 95%;
+                max-width: none;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .station-label {
+                font-size: 0.9em;
+                min-width: 120px;
+                padding: 8px 16px;
+            }
+
+            .station:nth-child(odd) {
+                margin-top: -120px;
+            }
+
+            .station:nth-child(even) {
+                margin-top: 300px;
+            }
+            
+            .station:nth-child(2)::before,
+            .station:nth-child(4)::before,
+            .station:nth-child(6)::before,
+            .station:nth-child(8)::before {
+                height: 100px; /* Adjusted to match the trunk exactly */
+            }
+
+            .station.foundation {
+                margin-top: -150px !important;
+            }
+            
+            .station.foundation::before {
+                height: 150px !important;
+            }
+            
+            /* Adjust content panel positions for mobile */
+            .station:nth-child(odd) .content-panel {
+                top: -280px;
+            }
+            
+            .station:nth-child(even) .content-panel {
+                top: 80px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .timeline-trunk {
+                left: 2%;
+                right: 2%;
+            }
+            
+            .timeline-stations {
+                width: 96%;
+            }
+            
+            .station-node {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2em;
+            }
+            
+            .station-label {
+                font-size: 0.8em;
+                min-width: 100px;
+                padding: 6px 12px;
+            }
+            
+            .content-panel.active {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+        }
+
+        /* Animation for the timeline trunk */
+        @keyframes drawTrunk {
+            from { width: 0; }
+            to { width: 90%; }
+        }
+
+        .timeline-trunk {
+            animation: drawTrunk 2.5s ease-in-out;
+        }
+
+        /* Station entrance animation */
+        @keyframes stationAppear {
+            from { 
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .station {
+            animation: stationAppear 0.6s ease-out;
+        }
+
+        .station:nth-child(1) { animation-delay: 0.2s; }
+        .station:nth-child(2) { animation-delay: 0.4s; }
+        .station:nth-child(3) { animation-delay: 0.6s; }
+        .station:nth-child(4) { animation-delay: 0.8s; }
+        .station:nth-child(5) { animation-delay: 1.0s; }
+        .station:nth-child(6) { animation-delay: 1.2s; }
+        .station:nth-child(7) { animation-delay: 1.4s; }
+        .station:nth-child(8) { animation-delay: 1.6s; }
+        .station:nth-child(9) { animation-delay: 1.8s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚂 Crypto 101: Your Journey Through Digital Currency</h1>
+            <p class="subtitle">Follow the subway map to learn how cryptocurrency works, step by step!</p>
+            <p style="color: #9ca3af; font-size: 0.9em; margin-top: 10px;">
+                Click any station on the timeline below to explore that topic 🗺️
+            </p>
+        </header>
+
+        <div class="timeline-container">
+            <div class="timeline-header">
+                <h2>🗺️ The Crypto Knowledge Subway Map</h2>
+                <p class="timeline-subtitle">Each station builds on the previous - start with blockchain and work your way along!</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-trunk"></div>
+                
+                <div class="timeline-stations">
+                    <!-- Station 1: Blockchain Foundation (Above) -->
+                    <div class="station foundation" onclick="openStation(0)">
+                        <div class="station-number">🏗️</div>
+                        <div class="station-node">🧱</div>
+                        <div class="station-label">Blockchain Foundation</div>
+                        
+                        <div class="content-panel" id="panel-0">
+                            <button class="close-btn" onclick="closeStation(0)">×</button>
+                            <div class="content-inner">
+                                <h3 style="color: #2d3748; margin-bottom: 20px;">🧱 The Foundation: What is Blockchain?</h3>
+                                
+                                <div class="analogy-box">
+                                    <h4>🏫 Think of it like a school notebook...</h4>
+                                    <p>Imagine a magical notebook where every student in the class writes down what happens each day. Once something is written, it can't be erased, and everyone has an identical copy. That's blockchain - the foundation everything else is built on!</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>What makes blockchain the foundation?</h4>
+                                    <p><strong>🔗 Chain of blocks:</strong> Information is stored in "blocks" that are connected like links in a chain.</p>
+                                    <p><strong>📊 Everyone has a copy:</strong> Thousands of computers around the world keep identical records.</p>
+                                    <p><strong>🔒 Can't be changed:</strong> Once information is added, it's permanent and secure.</p>
+                                    <p><strong>👥 No single boss:</strong> No one person or company controls it.</p>
+                                </div>
+
+                                <div class="visual-placeholder">
+                                    [INSERT IMAGE: Foundation diagram showing blockchain as the base with other concepts built on top]
+                                    <br>Visual: Blockchain as building blocks with other crypto concepts stacked above
+                                </div>
+
+                                <div class="example-box">
+                                    <h4>Real-world example:</h4>
+                                    <p>When you send Bitcoin to a friend, that transaction gets written into a new "block" and added to the chain. Now everyone in the network knows that Bitcoin moved from your address to your friend's address - and this record can never be deleted or faked!</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>Why blockchain comes first:</h4>
+                                    <p>Every other crypto concept (transactions, wallets, exchanges, NFTs) is built ON TOP of blockchain technology. It's like how you need a foundation before you can build a house. Without blockchain, none of the other stuff would work!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Station 2: Transactions (Below) -->
+                    <div class="station" onclick="openStation(1)">
+                        <div class="station-number">2</div>
+                        <div class="station-node">💸</div>
+                        <div class="station-label">Transactions & Smart Contracts</div>
+                        
+                        <div class="content-panel" id="panel-1">
+                            <button class="close-btn" onclick="closeStation(1)">×</button>
+                            <div class="content-inner">
+                                <h3 style="color: #4299e1; margin-bottom: 20px;">💸 Building on Blockchain: Transactions & Smart Contracts</h3>
+                                
+                                <div class="analogy-box">
+                                    <h4>📮 Transactions are like sending mail...</h4>
+                                    <p>When you send a letter, you write the recipient's address on the envelope. In crypto, you send money to someone's "wallet address" - but it all gets recorded on the blockchain foundation!</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>How transactions use blockchain:</h4>
+                                    <p><strong>🏠 Wallet addresses:</strong> Like email addresses, but for money (example: 1A2B3C4D5E...)</p>
+                                    <p><strong>📝 Written to blockchain:</strong> Every transaction gets permanently recorded</p>
+                                    <p><strong>⏱️ Takes time:</strong> Network needs to verify and add to the chain (10-60 minutes)</p>
+                                    <p><strong>💰 Fees required:</strong> You pay miners to include your transaction in a block</p>
+                                </div>
+
+                                <div class="visual-placeholder">
+                                    [INSERT IMAGE: Transaction flowing from one wallet to another, being written to a blockchain block]
+                                    <br>Visual: Two wallets connected with transaction arrow, writing to blockchain below
+                                </div>
+
+                                <div class="analogy-box">
+                                    <h4>🤖 Smart contracts are like vending machines...</h4>
+                                    <p>Put in $2, get a soda. No human needed! Smart contracts run ON the blockchain and automatically execute when conditions are met. Put in the right crypto, get your NFT automatically!</p>
+                                </div>
+
+                                <div class="example-box">
+                                    <h4>Smart contract example:</h4>
+                                    <p>You want to buy a concert ticket NFT. The smart contract (stored on blockchain) says: "If someone sends 0.1 ETH to this address, automatically send them the ticket NFT." The blockchain foundation makes this trustworthy and permanent!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Station 3: Accounts & NFTs (Above) -->
+                    <div class="station" onclick="openStation(2)">
+                        <div class="station-number">3</div>
+                        <div class="station-node">👤</div>
+                        <div class="station-label">Accounts & NFTs</div>
+                        
+                        <div class="content-panel" id="panel-2">
+                            <button class="close-btn" onclick="closeStation(2)">×</button>
+                            <div class="content-inner">
+                                <h3 style="color: #9f7aea; margin-bottom: 20px;">👤 User Accounts & NFTs on the Blockchain</h3>
+                                
+                                <div class="analogy-box">
+                                    <h4>🏦 Your crypto account is like a transparent bank account...</h4>
+                                    <p>But instead of your name, you have a long address like "0x742d35Cc6639C0532fEb". This address exists ON the blockchain - anyone can see how much money is in it, but only you can spend it!</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>Understanding crypto accounts:</h4>
+                                    <p><strong>🆔 Public address:</strong> Your "account number" on the blockchain - safe to share</p>
+                                    <p><strong>🔑 Private key:</strong> Your password to control that address - NEVER share this!</p>
+                                    <p><strong>👁️ Transparent:</strong> All balances and transactions visible on blockchain</p>
+                                    <p><strong>🎭 Pseudonymous:</strong> Your real name isn't connected (unless you tell people)</p>
+                                </div>
+
+                                <div class="analogy-box">
+                                    <h4>🎨 NFTs are like digital trading cards on the blockchain...</h4>
+                                    <p>Remember Pokemon cards? NFTs are like that, but digital and recorded on blockchain! Each one is unique and the blockchain proves you own it forever.</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>What makes NFTs special:</h4>
+                                    <p><strong>🔢 Unique ID:</strong> Each NFT has a special number stored on blockchain</p>
+                                    <p><strong>📜 Proof of ownership:</strong> Blockchain shows who owns what, forever</p>
+                                    <p><strong>💱 Can be traded:</strong> Send between accounts using blockchain transactions</p>
+                                    <p><strong>🎪 Many types:</strong> Art, music, videos, game items - all recorded on blockchain!</p>
+                                </div>
+
+                                <div class="visual-placeholder">
+                                    [INSERT IMAGE: User account sitting on top of blockchain foundation with NFTs]
+                                    <br>Visual: Digital wallet connected to blockchain blocks with NFT collection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Station 4: Viewing Transactions (Below) -->
+                    <div class="station" onclick="openStation(3)">
+                        <div class="station-number">4</div>
+                        <div class="station-node">🔍</div>
+                        <div class="station-label">Viewing Transactions</div>
+                        
+                        <div class="content-panel" id="panel-3">
+                            <button class="close-btn" onclick="closeStation(3)">×</button>
+                            <div class="content-inner">
+                                <h3 style="color: #ed8936; margin-bottom: 20px;">🔍 How to See Blockchain Transactions</h3>
+                                
+                                <div class="analogy-box">
+                                    <h4>🗞️ Block explorers are like newspapers for the blockchain...</h4>
+                                    <p>Imagine a newspaper that reports every single transaction recorded on the blockchain. That's a block explorer! You can look up any transaction and see the complete history.</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>Popular blockchain explorers:</h4>
+                                    <p><strong>🔗 Etherscan:</strong> For Ethereum blockchain (etherscan.io)</p>
+                                    <p><strong>🟠 Blockchain.info:</strong> For Bitcoin blockchain</p>
+                                    <p><strong>🔍 What you can see:</strong> Every transaction ever recorded</p>
+                                    <p><strong>🕵️ Detective work:</strong> Follow money trails across the blockchain!</p>
+                                </div>
+
+                                <div class="example-box">
+                                    <h4>Step-by-step blockchain exploration:</h4>
+                                    <p>1. Go to etherscan.io</p>
+                                    <p>2. Paste any wallet address in the search box</p>
+                                    <p>3. See ALL transactions recorded on blockchain for that address</p>
+                                    <p>4. Click any transaction to see complete blockchain details</p>
+                                    <p>5. Follow the trail to see the entire blockchain history!</p>
+                                </div>
+
+                                <div class="visual-placeholder">
+                                    [INSERT IMAGE: Computer screen showing block explorer interface with blockchain data]
+                                    <br>Visual: Browser showing Etherscan with transaction details and blockchain connection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Station 5: Exchanges (Above) -->
+                    <div class="station" onclick="openStation(4)">
+                        <div class="station-number">5</div>
+                        <div class="station-node">🏪</div>
+                        <div class="station-label">Crypto Exchanges</div>
+                        
+                        <div class="content-panel" id="panel-4">
+                            <button class="close-btn" onclick="closeStation(4)">×</button>
+                            <div class="content-inner">
+                                <h3 style="color: #38a169; margin-bottom: 20px;">🏪 Crypto Exchanges: Bridges to the Blockchain</h3>
+                                
+                                <div class="analogy-box">
+                                    <h4>🏦 Exchanges are like currency exchange shops...</h4>
+                                    <p>When you travel, you exchange dollars for euros. Crypto exchanges let you trade dollars for Bitcoin - then they write those transactions to the blockchain for you!</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>Popular exchanges:</h4>
+                                    <p><strong>🅰️ Coinbase:</strong> Beginner-friendly, connects to blockchain for you</p>
+                                    <p><strong>🅱️ Binance:</strong> Largest exchange, handles blockchain transactions</p>
+                                    <p><strong>🅰️ Kraken:</strong> Security-focused, blockchain integration</p>
+                                    <p><strong>💳 What they do:</strong> Help you buy crypto and interact with blockchain</p>
+                                </div>
+
+                                <div class="warning-box">
+                                    <h4>⚠️ Important about exchanges:</h4>
+                                    <p><strong>"Not your keys, not your crypto!"</strong> When you keep crypto on an exchange, they control your blockchain address, not you. The blockchain shows THEIR address as the owner, not yours!</p>
+                                </div>
+
+                                <div class="visual-placeholder">
+                                    [INSERT LOGOS: Coinbase, Binance, Kraken logos connected to blockchain]
+                                    <br>Visual: Exchange platforms with arrows showing connection to blockchain network
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Station 6: Hot Wallets (Below) -->
+                    <div class="station" onclick="openStation(5)">
+                        <div class="station-number">6</div>
+                        <div class="station-node">📱</div>
+                        <div class="station-label">Hot Wallets</div>
+                        
+                        <div class="content-panel" id="panel-5">
+                            <button class="close-btn" onclick="closeStation(5)">×</button>
+                            <div class="content-inner">
+                                <h3 style="color: #e53e3e; margin-bottom: 20px;">📱 Hot Wallets: Your Blockchain Interface</h3>
+                                
+                                <div class="analogy-box">
+                                    <h4>👛 Hot wallets are like the wallet in your pocket...</h4>
+                                    <p>You keep some cash for daily spending, but not your life savings! Hot wallets connect you directly to the blockchain for easy transactions, but they're always online.</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>How hot wallets work with blockchain:</h4>
+                                    <p><strong>🔑 You control keys:</strong> Your private key controls your blockchain address</p>
+                                    <p><strong>⚡ Direct access:</strong> Send transactions directly to blockchain</p>
+                                    <p><strong>📊 Real-time balance:</strong> Reads your balance from blockchain</p>
+                                    <p><strong>🎮 DeFi access:</strong> Interact with smart contracts on blockchain</p>
+                                </div>
+
+                                <div class="warning-box">
+                                    <h4>⚠️ Hot wallet risks:</h4>
+                                    <p><strong>🎯 Always online:</strong> Connected to internet = potential attack vector</p>
+                                    <p><strong>📱 Device security:</strong> If phone is hacked, blockchain access is compromised</p>
+                                    <p><strong>💰 Best practice:</strong> Only keep spending amounts, not life savings!</p>
+                                </div>
+
+                                <div class="visual-placeholder">
+                                    [INSERT LOGOS: MetaMask, Trust Wallet, Coinbase Wallet on phone]
+                                    <br>Visual: Mobile phone with wallet apps showing live blockchain connection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Station 7: Taxes (Above) -->
+                    <div class="station" onclick="openStation(6)">
+                        <div class="station-number">7</div>
+                        <div class="station-node">💰</div>
+                        <div class="station-label">Crypto Taxes</div>
+                        
+                        <div class="content-panel" id="panel-6">
+                            <button class="close-btn" onclick="closeStation(6)">×</button>
+                            <div class="content-inner">
+                                <h3 style="color: #d69e2e; margin-bottom: 20px;">💰 Crypto Taxes: Government Meets Blockchain</h3>
+                                
+                                <div class="analogy-box">
+                                    <h4>📊 Crypto taxes are like stock taxes...</h4>
+                                    <p>When you sell stocks for profit, you owe taxes. Same with crypto! The government tracks your blockchain transactions and wants their cut when you make money.</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>When blockchain activity creates taxes:</h4>
+                                    <p><strong>💰 Selling for profit:</strong> Exchange → bank account = taxable</p>
+                                    <p><strong>🔄 Trading crypto:</strong> Bitcoin → Ethereum on blockchain = taxable</p>
+                                    <p><strong>🛍️ Spending crypto:</strong> Buying things with crypto = taxable</p>
+                                    <p><strong>💸 NOT taxed:</strong> Moving between YOUR own addresses on blockchain</p>
+                                </div>
+
+                                <div class="warning-box">
+                                    <h4>⚠️ Blockchain makes taxes transparent:</h4>
+                                    <p><strong>📝 All recorded:</strong> Every transaction on blockchain is permanent</p>
+                                    <p><strong>🔍 Government can see:</strong> Blockchain is public - they can track everything</p>
+                                    <p><strong>💾 Keep records:</strong> Track your own transactions for tax time</p>
+                                </div>
+
+                                <div class="visual-placeholder">
+                                    [INSERT IMAGE: Blockchain transactions flowing to tax calculator and IRS forms]
+                                    <br>Visual: Blockchain data feeding into tax calculation software
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Station 8: Cold Wallets (Below) -->
+                    <div class="station" onclick="openStation(7)">
+                        <div class="station-number">8</div>
+                        <div class="station-node">🧊</div>
+                        <div class="station-label">Cold Wallets</div>
+                        
+                        <div class="content-panel" id="panel-7">
+                            <button class="close-btn" onclick="closeStation(7)">×</button>
+                            <div class="content-inner">
+                                <h3 style="color: #319795; margin-bottom: 20px;">🧊 Cold Wallets: Secure Blockchain Storage</h3>
+                                
+                                <div class="analogy-box">
+                                    <h4>🏦 Cold wallets are like a bank vault...</h4>
+                                    <p>You wouldn't keep $50,000 cash in your pocket! Cold wallets store your blockchain private keys offline, like keeping valuables in a safety deposit box that hackers can't reach.</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>How cold wallets work with blockchain:</h4>
+                                    <p><strong>🔑 Keys stored offline:</strong> Private key never exposed to internet</p>
+                                    <p><strong>🔌 Connect when needed:</strong> Plug in only to sign blockchain transactions</p>
+                                    <p><strong>📝 Sign offline:</strong> Transaction signed on device, then sent to blockchain</p>
+                                    <p><strong>🔒 Disconnect:</strong> Unplug and store safely after use</p>
+                                </div>
+
+                                <div class="warning-box">
+                                    <h4>⚠️ Cold wallet backup is CRITICAL:</h4>
+                                    <p><strong>📝 Recovery phrase:</strong> 24 words that can restore your blockchain access</p>
+                                    <p><strong>🔥 Device breaks:</strong> Hardware can die, but recovery phrase restores everything</p>
+                                    <p><strong>💀 Lose both:</strong> No recovery phrase + broken device = lost crypto forever!</p>
+                                </div>
+
+                                <div class="visual-placeholder">
+                                    [INSERT IMAGE: Ledger and Trezor hardware wallets connecting securely to blockchain]
+                                    <br>Visual: Hardware wallet devices with secure connection to blockchain network
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Station 9: Wallet Transactions (Above) -->
+                    <div class="station" onclick="openStation(8)">
+                        <div class="station-number">9</div>
+                        <div class="station-node">🔄</div>
+                        <div class="station-label">Wallet Transactions</div>
+                        
+                        <div class="content-panel" id="panel-8">
+                            <button class="close-btn" onclick="closeStation(8)">×</button>
+                            <div class="content-inner">
+                                <h3 style="color: #553c9a; margin-bottom: 20px;">🔄 Wallet-to-Wallet: Direct Blockchain Transactions</h3>
+                                
+                                <div class="analogy-box">
+                                    <h4>📧 Sending crypto is like sending an email...</h4>
+                                    <p>You need the recipient's "address", type your message (amount), hit send, and wait for delivery. But this email gets permanently written to the blockchain and can never be undone!</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>Step-by-step blockchain transaction:</h4>
+                                    <p><strong>1. 📱 Open wallet:</strong> Hot or cold wallet connected to blockchain</p>
+                                    <p><strong>2. 📋 Get address:</strong> Recipient shares their blockchain address</p>
+                                    <p><strong>3. 🎯 Enter details:</strong> Paste address, enter amount</p>
+                                    <p><strong>4. 💰 Set gas fee:</strong> Pay miners to include in blockchain</p>
+                                    <p><strong>5. 🚀 Broadcast:</strong> Send transaction to blockchain network</p>
+                                    <p><strong>6. ⏱️ Wait:</strong> Miners add to blockchain (10-60 minutes)</p>
+                                </div>
+
+                                <div class="warning-box">
+                                    <h4>⚠️ Critical blockchain warnings:</h4>
+                                    <p><strong>🎯 Check address:</strong> Wrong address = lost crypto forever (blockchain is permanent!)</p>
+                                    <p><strong>🧪 Test first:</strong> Send small amount, wait for blockchain confirmation</p>
+                                    <p><strong>↩️ No undo:</strong> Once written to blockchain, it's permanent!</p>
+                                </div>
+
+                                <div class="concept-box">
+                                    <h4>The complete journey:</h4>
+                                    <p>From blockchain foundation → through exchanges → stored in wallets → and finally direct peer-to-peer transactions on the blockchain. You've completed the full crypto subway map! 🎉</p>
+                                </div>
+
+                                <div class="visual-placeholder">
+                                    [INSERT IMAGE: Two wallets sending transaction through blockchain network]
+                                    <br>Visual: Complete subway map showing all stations connected to blockchain foundation
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-help">
+                <p class="nav-instructions">🚂 Click any station to explore that topic, or use the buttons below to navigate the subway map!</p>
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="openStation(0)">🏗️ Start at Foundation</button>
+                    <button class="nav-btn" onclick="openAllStations()">🗺️ Open All Stations</button>
+                    <button class="nav-btn" onclick="closeAllStations()">🚪 Close All Stations</button>
+                    <button class="nav-btn" onclick="exportNotes()">📝 Export Notes</button>
+                    <button class="nav-btn" onclick="toggleQuizMode()">🧠 Test Your Knowledge</button>
+                </div>
+            </div>
+            
+            <!-- Quiz overlay -->
+            <div id="quiz-overlay" class="quiz-overlay">
+                <div class="quiz-container">
+                    <h3>Test Your Crypto Knowledge</h3>
+                    <div id="quiz-question"></div>
+                    <div id="quiz-options"></div>
+                    <div id="quiz-feedback"></div>
+                    <div class="quiz-buttons">
+                        <button onclick="checkAnswer()" id="check-answer-btn">Check Answer</button>
+                        <button onclick="nextQuestion()" id="next-question-btn" disabled>Next Question</button>
+                        <button onclick="toggleQuizMode()" id="close-quiz-btn">Close Quiz</button>
+                    </div>
+                    <div id="quiz-progress">Question 1/10</div>
+                </div>
+            </div>
+            
+            <!-- Notes feature -->
+            <div id="notes-container" class="notes-container">
+                <div class="notes-header">
+                    <h3>My Crypto Learning Notes</h3>
+                    <button onclick="toggleNotes()">Close</button>
+                </div>
+                <div class="notes-body">
+                    <div id="notes-list"></div>
+                    <div class="notes-input">
+                        <textarea id="note-text" placeholder="Add a note about what you've learned..."></textarea>
+                        <button onclick="addNote()">Add Note</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="toggle-notes-btn" onclick="toggleNotes()">📝 My Notes</button>
+        </div>
+
+        <div class="progress-indicator" id="progressIndicator">
+            Welcome to the Crypto Subway! Click a station to begin 🚀
+        </div>
+        
+        <style>
+            /* Quiz mode styling */
+            .quiz-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.7);
+                z-index: 1000;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .quiz-container {
+                background: white;
+                border-radius: 20px;
+                padding: 30px;
+                width: 90%;
+                max-width: 600px;
+                max-height: 90vh;
+                overflow-y: auto;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            }
+            
+            .quiz-container h3 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #4a5568;
+            }
+            
+            #quiz-question {
+                font-size: 1.2em;
+                margin-bottom: 20px;
+                color: #2d3748;
+                line-height: 1.5;
+            }
+            
+            #quiz-options {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            
+            .quiz-option {
+                padding: 15px;
+                border: 2px solid #e2e8f0;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+            
+            .quiz-option:hover {
+                background: #f7fafc;
+                border-color: #cbd5e0;
+            }
+            
+            .quiz-option.selected {
+                background: #ebf8ff;
+                border-color: #4299e1;
+            }
+            
+            .quiz-option.correct {
+                background: #c6f6d5;
+                border-color: #48bb78;
+            }
+            
+            .quiz-option.incorrect {
+                background: #fed7d7;
+                border-color: #e53e3e;
+            }
+            
+            #quiz-feedback {
+                margin: 15px 0;
+                padding: 15px;
+                border-radius: 10px;
+                display: none;
+            }
+            
+            .quiz-buttons {
+                display: flex;
+                gap: 10px;
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .quiz-buttons button {
+                padding: 12px 20px;
+                border-radius: 8px;
+                border: none;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+            
+            #check-answer-btn {
+                background: #4299e1;
+                color: white;
+            }
+            
+            #next-question-btn {
+                background: #48bb78;
+                color: white;
+            }
+            
+            #close-quiz-btn {
+                background: #e53e3e;
+                color: white;
+            }
+            
+            #quiz-progress {
+                text-align: center;
+                margin-top: 20px;
+                color: #718096;
+            }
+            
+            /* Notes feature styling */
+            .notes-container {
+                display: none;
+                position: fixed;
+                bottom: 80px;
+                right: 25px;
+                width: 350px;
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                z-index: 50;
+                overflow: hidden;
+            }
+            
+            .notes-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px;
+                background: #4299e1;
+                color: white;
+            }
+            
+            .notes-header h3 {
+                margin: 0;
+                font-size: 1.1em;
+            }
+            
+            .notes-header button {
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 0.9em;
+            }
+            
+            .notes-body {
+                padding: 15px;
+                max-height: 400px;
+                overflow-y: auto;
+            }
+            
+            #notes-list {
+                margin-bottom: 15px;
+            }
+            
+            .note-item {
+                background: #f7fafc;
+                padding: 12px;
+                border-radius: 8px;
+                margin-bottom: 10px;
+                border-left: 4px solid #4299e1;
+                font-size: 0.9em;
+            }
+            
+            .note-date {
+                font-size: 0.8em;
+                color: #718096;
+                margin-top: 5px;
+                text-align: right;
+            }
+            
+            .notes-input {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            #note-text {
+                padding: 10px;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+                resize: vertical;
+                min-height: 80px;
+                font-family: inherit;
+            }
+            
+            .notes-input button {
+                padding: 10px;
+                background: #4299e1;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            
+            #toggle-notes-btn {
+                position: fixed;
+                bottom: 25px;
+                right: 25px;
+                background: #4299e1;
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 30px;
+                cursor: pointer;
+                font-size: 1em;
+                transition: all 0.3s ease;
+                font-weight: 600;
+                z-index: 45;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            #toggle-notes-btn:hover {
+                background: #3182ce;
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            }
+            
+            @media (max-width: 768px) {
+                .notes-container {
+                    width: 90%;
+                    max-width: 350px;
+                    right: 5%;
+                }
+                
+                .quiz-container {
+                    width: 95%;
+                    padding: 20px;
+                }
+            }
+        </style>
+    </div>
+
+    <script>
+        // Store all station data for easier management
+        const stationData = [
+            { name: 'Blockchain Foundation', icon: '🧱' },
+            { name: 'Transactions & Smart Contracts', icon: '💸' },
+            { name: 'Accounts & NFTs', icon: '👤' },
+            { name: 'Viewing Transactions', icon: '🔍' },
+            { name: 'Crypto Exchanges', icon: '🏪' },
+            { name: 'Hot Wallets', icon: '📱' },
+            { name: 'Crypto Taxes', icon: '💰' },
+            { name: 'Cold Wallets', icon: '🧊' },
+            { name: 'Wallet Transactions', icon: '🔄' }
+        ];
+        
+        // Track user progress for analytics
+        let userProgress = {
+            visitedStations: new Set(),
+            timeSpent: {},
+            lastOpenedStation: null,
+            startTime: Date.now()
+        };
+        
+        // Track open stations
+        let openStations = new Set();
+        
+        // Session storage to remember progress
+        function saveProgress() {
+            const progress = {
+                visitedStations: Array.from(userProgress.visitedStations),
+                timeSpent: userProgress.timeSpent,
+                lastOpenedStation: userProgress.lastOpenedStation
+            };
+            localStorage.setItem('crypto_progress', JSON.stringify(progress));
+        }
+        
+        function loadProgress() {
+            const savedProgress = localStorage.getItem('crypto_progress');
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                userProgress.visitedStations = new Set(progress.visitedStations);
+                userProgress.timeSpent = progress.timeSpent;
+                userProgress.lastOpenedStation = progress.lastOpenedStation;
+                
+                // Visual indication of visited stations
+                userProgress.visitedStations.forEach(index => {
+                    const stationNode = document.querySelector(`.station:nth-child(${parseInt(index) + 1}) .station-node`);
+                    if (stationNode) {
+                        stationNode.innerHTML += '<span class="visited-indicator">✓</span>';
+                    }
+                });
+                
+                // Update progress message
+                updateProgressMessage();
+            }
+        }
+        
+        function updateProgressMessage() {
+            const visited = userProgress.visitedStations.size;
+            const total = stationData.length;
+            const percent = Math.round((visited / total) * 100);
+            
+            let message;
+            if (visited === 0) {
+                message = 'Welcome to the Crypto Subway! Click a station to begin 🚀';
+            } else if (visited === total) {
+                message = 'Congratulations! You\'ve explored all stations! 🎉';
+            } else {
+                message = `Progress: ${visited}/${total} stations visited (${percent}%) 🚂`;
+            }
+            
+            updateProgressIndicator(message);
+        }
+
+        function openStation(index) {
+            const panel = document.getElementById(`panel-${index}`);
+            
+            // Record start time for this station
+            const startTime = Date.now();
+            
+            // Track analytics
+            if (!userProgress.visitedStations.has(index)) {
+                userProgress.visitedStations.add(index);
+                
+                // Visual indication this station was visited
+                const stationNode = document.querySelector(`.station:nth-child(${parseInt(index) + 1}) .station-node`);
+                if (stationNode) {
+                    const visitedIndicator = document.createElement('span');
+                    visitedIndicator.className = 'visited-indicator';
+                    visitedIndicator.textContent = '✓';
+                    stationNode.appendChild(visitedIndicator);
+                }
+            }
+            
+            // If we have a previously opened station, record time spent there
+            if (userProgress.lastOpenedStation !== null) {
+                const timeSpent = Date.now() - startTime;
+                userProgress.timeSpent[userProgress.lastOpenedStation] = 
+                    (userProgress.timeSpent[userProgress.lastOpenedStation] || 0) + timeSpent;
+            }
+            
+            userProgress.lastOpenedStation = index;
+            
+            // Close other panels first
+            closeAllStations();
+            
+            // Open this panel
+            panel.classList.add('active');
+            openStations.add(index);
+            
+            // Update progress indicator
+            updateProgressIndicator(`Now exploring: ${stationData[index].name} ${stationData[index].icon}`);
+            
+            // Scroll to show the panel with smooth animation
+            setTimeout(() => {
+                panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+            
+            // Save progress to localStorage
+            saveProgress();
+        }
+
+        function closeStation(index) {
+            const panel = document.getElementById(`panel-${index}`);
+            panel.classList.remove('active');
+            openStations.delete(index);
+            
+            // Record time spent on this station
+            if (userProgress.lastOpenedStation === index) {
+                const timeSpent = Date.now() - userProgress.startTime;
+                userProgress.timeSpent[index] = (userProgress.timeSpent[index] || 0) + timeSpent;
+                userProgress.lastOpenedStation = null;
+            }
+            
+            updateProgressMessage();
+            saveProgress();
+        }
+
+        function closeAllStations() {
+            for (let i = 0; i < stationData.length; i++) {
+                const panel = document.getElementById(`panel-${i}`);
+                panel.classList.remove('active');
+            }
+            openStations.clear();
+        }
+
+        function openAllStations() {
+            for (let i = 0; i < stationData.length; i++) {
+                const panel = document.getElementById(`panel-${i}`);
+                panel.classList.add('active');
+                openStations.add(i);
+                
+                // Mark all as visited
+                if (!userProgress.visitedStations.has(i)) {
+                    userProgress.visitedStations.add(i);
+                }
+            }
+            updateProgressIndicator('All stations open - explore the entire crypto subway! 🌟');
+            saveProgress();
+        }
+
+        function updateProgressIndicator(message) {
+            const indicator = document.getElementById('progressIndicator');
+            indicator.textContent = message;
+        }
+
+        // Keyboard navigation with accessibility improvements
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAllStations();
+            }
+            if (e.key >= '1' && e.key <= '9') {
+                const stationIndex = parseInt(e.key) - 1;
+                openStation(stationIndex);
+            }
+        });
+
+        // Auto-hide panels when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.content-panel') && !e.target.closest('.station')) {
+                // Don't close if clicking navigation buttons
+                if (!e.target.closest('.nav-buttons')) {
+                    closeAllStations();
+                }
+            }
+        });
+
+        // Add touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        
+        function handleSwipe() {
+            const currentIndex = userProgress.lastOpenedStation;
+            if (currentIndex === null) return;
+            
+            // Swipe threshold
+            const threshold = 100;
+            
+            // Left swipe (next station)
+            if (touchEndX < touchStartX - threshold && currentIndex < stationData.length - 1) {
+                openStation(currentIndex + 1);
+            }
+            
+            // Right swipe (previous station)
+            if (touchEndX > touchStartX + threshold && currentIndex > 0) {
+                openStation(currentIndex - 1);
+            }
+        }
+
+        // Quiz functionality
+        let quizQuestions = [
+            {
+                question: "What is blockchain?",
+                options: [
+                    "A type of cryptocurrency", 
+                    "A chain of blocks containing transaction data", 
+                    "A software for mining Bitcoin", 
+                    "A digital wallet"
+                ],
+                correctAnswer: 1,
+                explanation: "Blockchain is a digital ledger of transactions that is duplicated and distributed across a network of computer systems, forming a 'chain' of blocks containing data."
+            },
+            {
+                question: "Which of these is NOT a characteristic of blockchain technology?",
+                options: [
+                    "Decentralization", 
+                    "Transparency", 
+                    "Centralized control", 
+                    "Immutability"
+                ],
+                correctAnswer: 2,
+                explanation: "Blockchain is specifically designed to avoid centralized control. Instead, it uses a distributed network where no single entity has control."
+            },
+            {
+                question: "What is a cryptocurrency wallet?",
+                options: [
+                    "A physical device to store cryptocurrency coins", 
+                    "A software that stores your private and public keys", 
+                    "A bank account for digital currencies", 
+                    "An exchange platform"
+                ],
+                correctAnswer: 1,
+                explanation: "A cryptocurrency wallet is a software program that stores your private and public keys and interfaces with blockchain to enable users to send and receive digital currency."
+            },
+            {
+                question: "What is a 'hot wallet' in cryptocurrency?",
+                options: [
+                    "A wallet with a lot of funds", 
+                    "A wallet that is always online", 
+                    "A physical hardware wallet", 
+                    "A wallet that has been hacked"
+                ],
+                correctAnswer: 1,
+                explanation: "A hot wallet is connected to the internet and therefore accessible online. This makes it convenient for transactions but potentially more vulnerable to hacking."
+            },
+            {
+                question: "What is a 'smart contract'?",
+                options: [
+                    "A legally binding agreement for cryptocurrency exchanges", 
+                    "A digital contract that requires lawyer verification", 
+                    "Self-executing code stored on blockchain that runs when conditions are met", 
+                    "An agreement between miners"
+                ],
+                correctAnswer: 2,
+                explanation: "A smart contract is a self-executing contract with the terms directly written into code. The code and the agreements exist on the blockchain network, and execute automatically when predefined conditions are met."
+            },
+            {
+                question: "What is a 'block explorer'?",
+                options: [
+                    "A tool to mine new blocks", 
+                    "Software to create new blockchains", 
+                    "A search engine for finding blockchains", 
+                    "A browser tool for viewing blockchain transactions"
+                ],
+                correctAnswer: 3,
+                explanation: "A block explorer is a browser for the blockchain that allows users to search and navigate the blockchain for transactions, addresses, and other information."
+            },
+            {
+                question: "What is 'cold storage' in cryptocurrency?",
+                options: [
+                    "Storing crypto in a cold environment for security", 
+                    "Keeping cryptocurrency offline", 
+                    "Freezing accounts temporarily", 
+                    "Storing inactive cryptocurrencies"
+                ],
+                correctAnswer: 1,
+                explanation: "Cold storage refers to keeping a cryptocurrency wallet offline to reduce the risk of hacking. This can be done through hardware wallets, paper wallets, or other methods."
+            },
+            {
+                question: "When does a cryptocurrency transaction become irreversible?",
+                options: [
+                    "Immediately after sending", 
+                    "After one confirmation", 
+                    "After multiple confirmations on the blockchain", 
+                    "After 24 hours"
+                ],
+                correctAnswer: 2,
+                explanation: "Cryptocurrency transactions generally become more irreversible with each confirmation (block added to the blockchain). The number of confirmations needed varies by cryptocurrency, but multiple confirmations are standard for full security."
+            },
+            {
+                question: "What is 'DeFi'?",
+                options: [
+                    "Digital Finance", 
+                    "Decentralized Finance", 
+                    "Distributed Financial instruments", 
+                    "Digital Fiat currency"
+                ],
+                correctAnswer: 1,
+                explanation: "DeFi stands for Decentralized Finance, which refers to financial applications built on blockchain technologies, typically using smart contracts on blockchains like Ethereum."
+            },
+            {
+                question: "What is an NFT?",
+                options: [
+                    "New Financial Token", 
+                    "National Funds Transfer", 
+                    "Non-Fungible Token", 
+                    "Network Function Technology"
+                ],
+                correctAnswer: 2,
+                explanation: "NFT stands for Non-Fungible Token. Unlike cryptocurrencies where each token is identical (fungible), NFTs are unique digital assets with distinct values and characteristics, often used for digital art and collectibles."
+            }
+        ];
+        
+        let currentQuestion = 0;
+        let selectedOption = null;
+        let quizActive = false;
+        
+        function toggleQuizMode() {
+            const quizOverlay = document.getElementById('quiz-overlay');
+            
+            if (quizActive) {
+                quizOverlay.style.display = 'none';
+                quizActive = false;
+            } else {
+                quizOverlay.style.display = 'flex';
+                quizActive = true;
+                currentQuestion = 0;
+                loadQuestion();
+            }
+        }
+        
+        function loadQuestion() {
+            const questionData = quizQuestions[currentQuestion];
+            const questionElement = document.getElementById('quiz-question');
+            const optionsElement = document.getElementById('quiz-options');
+            const feedbackElement = document.getElementById('quiz-feedback');
+            const progressElement = document.getElementById('quiz-progress');
+            
+            // Reset UI
+            questionElement.textContent = questionData.question;
+            optionsElement.innerHTML = '';
+            feedbackElement.style.display = 'none';
+            feedbackElement.innerHTML = '';
+            document.getElementById('next-question-btn').disabled = true;
+            selectedOption = null;
+            
+            // Create options
+            questionData.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'quiz-option';
+                optionElement.textContent = option;
+                optionElement.dataset.index = index;
+                
+                optionElement.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    document.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to this option
+                    this.classList.add('selected');
+                    selectedOption = index;
+                });
+                
+                optionsElement.appendChild(optionElement);
+            });
+            
+            // Update progress
+            progressElement.textContent = `Question ${currentQuestion + 1}/${quizQuestions.length}`;
+        }
+        
+        function checkAnswer() {
+            if (selectedOption === null) {
+                alert('Please select an answer');
+                return;
+            }
+            
+            const questionData = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const feedbackElement = document.getElementById('quiz-feedback');
+            
+            // Mark correct and incorrect
+            options.forEach((option, index) => {
+                if (index === questionData.correctAnswer) {
+                    option.classList.add('correct');
+                } else if (index === selectedOption) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // Show feedback
+            feedbackElement.style.display = 'block';
+            feedbackElement.style.backgroundColor = selectedOption === questionData.correctAnswer ? '#c6f6d5' : '#fed7d7';
+            feedbackElement.innerHTML = `
+                <strong>${selectedOption === questionData.correctAnswer ? 'Correct!' : 'Incorrect!'}</strong>
+                <p>${questionData.explanation}</p>
+            `;
+            
+            // Enable next button
+            document.getElementById('next-question-btn').disabled = false;
+        }
+        
+        function nextQuestion() {
+            currentQuestion++;
+            
+            if (currentQuestion >= quizQuestions.length) {
+                // End of quiz
+                const quizOptions = document.getElementById('quiz-options');
+                const quizQuestion = document.getElementById('quiz-question');
+                const feedbackElement = document.getElementById('quiz-feedback');
+                const progressElement = document.getElementById('quiz-progress');
+                
+                quizOptions.innerHTML = '';
+                quizQuestion.textContent = 'Quiz Complete!';
+                feedbackElement.style.display = 'block';
+                feedbackElement.style.backgroundColor = '#c6f6d5';
+                feedbackElement.innerHTML = `
+                    <strong>Congratulations!</strong>
+                    <p>You've completed the Crypto 101 quiz. Keep exploring the subway map to learn more!</p>
+                `;
+                
+                progressElement.textContent = `Completed ${quizQuestions.length}/${quizQuestions.length}`;
+                
+                document.getElementById('next-question-btn').disabled = true;
+                document.getElementById('check-answer-btn').disabled = true;
+            } else {
+                // Load next question
+                loadQuestion();
+            }
+        }
+        
+        // Notes functionality
+        let userNotes = [];
+        
+        function toggleNotes() {
+            const notesContainer = document.getElementById('notes-container');
+            notesContainer.style.display = notesContainer.style.display === 'block' ? 'none' : 'block';
+            
+            if (notesContainer.style.display === 'block') {
+                displayNotes();
+            }
+        }
+        
+        function addNote() {
+            const noteText = document.getElementById('note-text').value.trim();
+            
+            if (noteText) {
+                const newNote = {
+                    text: noteText,
+                    date: new Date(),
+                    stationId: userProgress.lastOpenedStation
+                };
+                
+                userNotes.push(newNote);
+                saveNotes();
+                displayNotes();
+                
+                // Clear input
+                document.getElementById('note-text').value = '';
+            }
+        }
+        
+        function displayNotes() {
+            const notesList = document.getElementById('notes-list');
+            notesList.innerHTML = '';
+            
+            if (userNotes.length === 0) {
+                notesList.innerHTML = '<p style="color:#718096;text-align:center;">No notes yet. Start adding notes as you learn!</p>';
+                return;
+            }
+            
+            // Sort notes by date (newest first)
+            userNotes.sort((a, b) => b.date - a.date);
+            
+            userNotes.forEach((note, index) => {
+                const noteElement = document.createElement('div');
+                noteElement.className = 'note-item';
+                
+                let stationName = 'General';
+                if (note.stationId !== null && stationData[note.stationId]) {
+                    stationName = stationData[note.stationId].name;
+                }
+                
+                const dateString = new Date(note.date).toLocaleString();
+                
+                noteElement.innerHTML = `
+                    <div>${note.text}</div>
+                    <div class="note-date">
+                        <strong>${stationName}</strong> - ${dateString}
+                        <button onclick="deleteNote(${index})" style="background:none;border:none;color:#e53e3e;cursor:pointer;font-size:0.9em;margin-left:5px;">🗑️</button>
+                    </div>
+                `;
+                
+                notesList.appendChild(noteElement);
+            });
+        }
+        
+        function deleteNote(index) {
+            if (confirm('Delete this note?')) {
+                userNotes.splice(index, 1);
+                saveNotes();
+                displayNotes();
+            }
+        }
+        
+        function saveNotes() {
+            localStorage.setItem('crypto_notes', JSON.stringify(userNotes));
+        }
+        
+        function loadNotes() {
+            const savedNotes = localStorage.getItem('crypto_notes');
+            if (savedNotes) {
+                userNotes = JSON.parse(savedNotes);
+                // Convert date strings back to Date objects
+                userNotes.forEach(note => {
+                    note.date = new Date(note.date);
+                });
+            }
+        }
+        
+        function exportNotes() {
+            if (userNotes.length === 0) {
+                alert('You have no notes to export yet.');
+                return;
+            }
+            
+            let exportText = "# My Crypto Learning Notes\n\n";
+            
+            userNotes.forEach(note => {
+                let stationName = 'General';
+                if (note.stationId !== null && stationData[note.stationId]) {
+                    stationName = stationData[note.stationId].name;
+                }
+                
+                const dateString = new Date(note.date).toLocaleString();
+                
+                exportText += `## ${stationName}\n`;
+                exportText += `${note.text}\n`;
+                exportText += `_${dateString}_\n\n`;
+            });
+            
+            // Create a download link
+            const blob = new Blob([exportText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'My_Crypto_Learning_Notes.txt';
+            a.click();
+            
+            // Clean up
+            URL.revokeObjectURL(url);
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved progress and notes
+            loadProgress();
+            loadNotes();
+            
+            // Initial welcome message
+            setTimeout(() => {
+                updateProgressMessage();
+            }, 1000);
+            
+            // Add ARIA labels for accessibility
+            document.querySelectorAll('.station').forEach((station, index) => {
+                station.setAttribute('aria-label', `Station ${index + 1}: ${stationData[index].name}`);
+                station.setAttribute('role', 'button');
+                station.setAttribute('tabindex', '0');
+                
+                // Make it keyboard accessible
+                station.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        openStation(index);
+                    }
+                });
+            });
+            
+            // Randomly shuffle quiz questions for variety
+            quizQuestions = quizQuestions.sort(() => Math.random() - 0.5);
+        });
+    </script>
+</body>
+</html>

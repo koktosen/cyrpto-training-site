@@ -1,0 +1,33 @@
+{
+  "name": "crypto-training-site",
+  "version": "1.0.0",
+  "description": "An interactive crypto education platform with subway map interface",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "build": "echo 'No build step required - static files'",
+    "dev": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "blockchain",
+    "education",
+    "interactive",
+    "learning",
+    "bitcoin",
+    "ethereum",
+    "wallet",
+    "NFT"
+  ],
+  "author": "Crypto Training Site",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/crypto-training-site.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+} 
