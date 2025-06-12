@@ -25,6 +25,9 @@
 - [x] Update content panel positions to match new station spacing
 - [x] Center even stations and foundation station horizontally (translateX adjustments)
 - [x] Apply consistent centering on mobile devices (smaller translateX values)
+- [x] Push alignment improvements to repository (commit 7c33cc1)
+- [x] Push to dedicated crypto training site repository (https://github.com/koktosen/cyrpto-training-site.git)
+- [ ] Deploy to Netlify for live testing
 - [ ] Final visual verification and user testing
 
 ## 📋 Backlog Tasks
