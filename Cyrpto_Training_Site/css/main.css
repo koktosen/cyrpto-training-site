@@ -109,20 +109,20 @@ h1 {
     text-align: center; /* Center all text content */
 }
 
-/* Alternating positioning */
+/* Increased spacing to show trunk connections clearly */
 .station:nth-child(odd) {
-    margin-top: -100px; /* Above the trunk */
+    margin-top: -120px; /* Standardized spacing above trunk */
 }
 
 .station:nth-child(even) {
-    margin-top: 400px; /* Below the trunk, adjusted for better visibility */
+    margin-top: 320px; /* Moved down 200px to create space for trunk connections */
+    transform: translateX(-15px); /* Move even stations left for better centering */
 }
 
-/* Special adjustment for the foundation */
+/* Foundation station - special positioning and centering */
 .station.foundation {
-    margin-top: -180px !important; /* Position foundation above trunk */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Ensure it's perfectly centered */
+    margin-top: -140px !important; /* Slightly higher for emphasis, but proportional */
+    transform: translateX(-15px); /* Move left for better centering */
 }
 
 /* Connecting lines from stations to trunk */
@@ -136,16 +136,16 @@ h1 {
     transform: translateX(-50%);
 }
 
-/* For stations above the trunk (odd-numbered) */
+/* For stations above the trunk (odd-numbered) - connect directly to trunk */
 .station:nth-child(odd)::before {
-    top: 28%; /* Start from bottom of node */
-    height: 150px; /* Connect to trunk */
+    bottom: -40px; /* Start from station label */
+    height: 160px; /* Extended to ensure trunk connection */
 }
 
-/* For stations below the trunk (even-numbered) */
+/* For stations below the trunk (even-numbered) - connect to top stations */
 .station:nth-child(even)::before {
-    bottom: 100%; /* Start from top of node */
-    height: 100px; /* Adjusted to reach exactly to the trunk */
+    top: -40px; /* Start from station label */
+    height: 480px; /* Extended to reach the bottom of top stations */
 }
 
 /* Station-specific line colors - subway map style */
@@ -254,14 +254,15 @@ h1 {
     min-width: 160px;
 }
 
-/* Override the connection line for foundation station */
+/* Foundation station connection line - matches trunk connection style */
 .station.foundation::before {
     width: 6px; /* Match the other lines */
-    height: 150px !important; /* Fixed height to reach the trunk */
+    height: 180px !important; /* Extended to ensure trunk connection for foundation */
     background: #2d3748 !important; /* Solid color for subway map style */
+    bottom: -40px; /* Consistent with other odd stations */
 }
 
-/* Content panels */
+/* Content panels - improved positioning and layering */
 .content-panel {
     position: absolute;
     left: 50%; /* Center the panel */
@@ -273,26 +274,26 @@ h1 {
     border-radius: 20px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     transition: all 0.4s ease;
-    z-index: 20; /* Increase z-index to appear above other elements */
+    z-index: 100; /* Higher z-index to ensure panels appear above all elements */
 }
 
-/* Position content panels */
+/* Content panel positioning adjusted for increased station spacing */
 .station:nth-child(odd) .content-panel {
-    top: -350px; /* Move panels further up to avoid overlap */
+    top: -400px; /* Move panels further up with more spacing */
 }
 
 .station:nth-child(even) .content-panel {
-    top: 160px; /* Move panels further down to avoid overlap */
+    top: 400px; /* Adjusted down to match new station positions */
 }
 
-/* Station-specific panel adjustments if needed */
+/* Station-specific panel adjustments - consistent with new positioning */
 .station:nth-child(2) .content-panel {
-    top: 160px; /* Fine-tune second station panel */
+    top: 400px; /* Consistent with even station positioning */
 }
 
-/* Foundation station panel adjustment */
+/* Foundation station panel adjustment - consistent with odd positioning */
 .station:nth-child(1) .content-panel {
-    top: -350px; /* Adjust foundation panel position */
+    top: -400px; /* Consistent with odd station positioning */
 }
 
 .content-panel.active {
@@ -369,7 +370,7 @@ h1 {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    z-index: 25; /* Ensure button appears above content */
+    z-index: 110; /* Ensure button appears above content panels */
 }
 
 .close-btn:hover {
@@ -838,22 +839,24 @@ h1 {
     }
 
     .station:nth-child(even) {
-        margin-top: 300px;
+        margin-top: 400px; /* Increased spacing for mobile to match desktop changes */
+        transform: translateX(-10px); /* Smaller left adjustment for mobile */
     }
     
     .station:nth-child(2)::before,
     .station:nth-child(4)::before,
     .station:nth-child(6)::before,
     .station:nth-child(8)::before {
-        height: 100px; /* Adjusted to match the trunk exactly */
+        height: 420px; /* Extended to connect bottom stations to top stations on mobile */
     }
 
     .station.foundation {
         margin-top: -150px !important;
+        transform: translateX(-10px); /* Consistent left centering on mobile */
     }
     
     .station.foundation::before {
-        height: 150px !important;
+        height: 170px !important; /* Maintain trunk connection for foundation on mobile */
     }
     
     /* Adjust content panel positions for mobile */
@@ -862,7 +865,7 @@ h1 {
     }
     
     .station:nth-child(even) .content-panel {
-        top: 80px;
+        top: 180px; /* Adjusted for increased mobile station spacing */
     }
     
     .nav-buttons {
@@ -956,4 +959,3 @@ h1 {
 .station:nth-child(7) { animation-delay: 1.4s; }
 .station:nth-child(8) { animation-delay: 1.6s; }
 .station:nth-child(9) { animation-delay: 1.8s; }
-</rewritten_file> 
